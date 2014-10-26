@@ -1,0 +1,13 @@
+<div ng-repeat="(postId, post) in posts">
+  <a href="{{post.url}}">{{post.title}}</a>
+  <a href="javascript:void(0);" ng-click="deletePost(postId)">delete</a>
+</div>
+
+<form ng-submit="submitPost()">
+  <input type="text" ng-model="post.title">
+  <input type="text" ng-model="post.url">
+  <input type="submit" value="Submit">
+</form>
+
+Posts: {{ posts }}<br />
+Post: {{ post }}
