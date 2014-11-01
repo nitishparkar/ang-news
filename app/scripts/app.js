@@ -17,8 +17,10 @@ var app = angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'firebase'
   ])
+  .constant('FIREBASE_URL', 'https://scorching-heat-7282.firebaseio.com/')
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
