@@ -21,6 +21,7 @@ var app = angular
     'firebase'
   ])
   .constant('FIREBASE_URL', 'https://scorching-heat-7282.firebaseio.com/')
+  .constant('INITIAL_POST', {title: '', url: 'http://'})
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
