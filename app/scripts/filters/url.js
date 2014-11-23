@@ -5,5 +5,5 @@ app.filter('hostNameFromUrl', function() {
     var url = document.createElement('a');
     url.href = str;
     return url.hostname;
-  }
+  };
 });
