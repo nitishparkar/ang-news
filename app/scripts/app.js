@@ -32,6 +32,10 @@ var app = angular
         templateUrl: 'views/showpost.html',
         controller: 'PostViewCtrl'
       })
+      .when('/users/:userId', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      })
       .when('/signup', {
         templateUrl: 'views/signup.html',
         controller: 'AuthCtrl',
