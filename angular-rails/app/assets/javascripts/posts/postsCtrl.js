@@ -1,13 +1,19 @@
-angular.module('whackerNews').controller('PostsCtrl', function($scope, postsFactory, $stateParams) {
-  $scope.post = postsFactory.posts[$stateParams.id];
+angular.module('whackerNews').controller('PostsCtrl', function($scope, postsFactory, post) {
+  $scope.post = post;
 
   $scope.addComment = function() {
     if($scope.body === '') { return; }
-    $scope.post.comments.push({
+    postsFactory.addComment(post.id, {
       body: $scope.body,
       author: 'user',
       upvotes: 0
+    }).success(function(data) {
+      $scope.post.comments.push(data);
     });
     $scope.body = '';
+  }
+
+  $scope.upvoteComment = function(comment) {
+    postsFactory.upvoteComment(post.id, comment);
   }
 });

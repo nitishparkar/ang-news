@@ -5,7 +5,7 @@ angular.module('whackerNews').controller('MainCtrl', function($scope, postsFacto
 
   $scope.addPost = function() {
     if($scope.title && $scope.title !== '') {
-      $scope.posts.push({
+      postsFactory.create({
         title: $scope.title,
         link: $scope.link,
         upvotes: 0,
@@ -20,6 +20,6 @@ angular.module('whackerNews').controller('MainCtrl', function($scope, postsFacto
   }
 
   $scope.upvote = function(post) {
-    post.upvotes += 1;
-  }
+    postsFactory.upvote(post);
+  };
 });
