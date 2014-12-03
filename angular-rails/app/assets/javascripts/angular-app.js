@@ -1,4 +1,4 @@
-angular.module('whackerNews', ['ui.router', 'templates'])
+angular.module('whackerNews', ['ui.router', 'templates', 'Devise'])
 .config(function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
@@ -19,6 +19,24 @@ angular.module('whackerNews', ['ui.router', 'templates'])
         post: function($stateParams, postsFactory) {
           return postsFactory.get($stateParams.id);
         }
+      }
+    }).state('login', {
+      url: '/login',
+      templateUrl: 'auth/_login.html',
+      controller: 'AuthCtrl',
+      onEnter: function($state, Auth) {
+        Auth.currentUser().then(function() {
+          $state.go('home');
+        });
+      }
+    }).state('register', {
+      url: '/register',
+      templateUrl: 'auth/_register.html',
+      controller: 'AuthCtrl',
+      onEnter: function($state, Auth) {
+        Auth.currentUser().then(function() {
+          $state.go('home');
+        });
       }
     });
 
